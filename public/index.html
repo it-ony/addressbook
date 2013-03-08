@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!--
+    Created with rAppid.js - a declarative RIA MVC JS Framework developed by Tony Findeisen and Marcus Krejpowicz
+    Visit http://rappidjs.com for more Information.
+    -->
+    <title>AddressBook</title>
+
+    <!-- VERSION="${VERSION}" -->
+
+    <meta name="fragment" content="!">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<script type="text/javascript" data-usage="bootstrap">
+    function startApplication(){
+        rAppid.bootStrap("app/AddressBook.xml");
+    }
+</script>
+<script type="text/javascript" src="js/lib/require.js" data-usage="lib"></script>
+<script type="text/javascript" src="js/lib/rAppid.js" data-usage="lib" onload="startApplication()"></script>
+</body>
+</html>
