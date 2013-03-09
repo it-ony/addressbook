@@ -25,7 +25,7 @@
                     <div>
                         <label for="phone">Phonenumber</label>
                         <input id="phone" type="text" value="{{person.phone}}"/>
-                        <span class="error">{person.errors().phone.message}</span>
+                        <div class="error">{person.errors().phone.message}</div>
                     </div>
                     <div>
                         <input type="submit" value="Save"/>
