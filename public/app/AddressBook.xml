@@ -1,35 +1,19 @@
 <?xml version="1.0"?>
 <app:AddressBookClass xmlns="http://www.w3.org/1999/xhtml"
-                      xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:view="app.view">
+                      xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:view="app.view" xmlns:field="js.ui.field">
     <div class="container">
         <h1>Address Book</h1>
         <div>
             <form onsubmit="submitForm">
                 <fieldset>
                     <legend>Create new contact</legend>
-                    <div>
-                        <label for="firstName">Firstname</label>
-                        <input id="firstName" type="text" value="{{person.firstName}}"/>
-                        <div class="error">{person.errors().firstName.message}</div>
-                    </div>
-                    <div>
-                        <label for="lastName">Lastname</label>
-                        <input id="lastName" type="text" value="{{person.lastName}}"/>
-                        <div class="error">{person.errors().lastName.message}</div>
-                    </div>
-                    <div>
-                        <label for="email">Email</label>
-                        <input id="email" type="text" value="{{person.email}}"/>
-                        <div class="error">{person.errors().email.message}</div>
-                    </div>
-                    <div>
-                        <label for="phone">Phonenumber</label>
-                        <input id="phone" type="text" value="{{person.phone}}"/>
-                        <div class="error">{person.errors().phone.message}</div>
-                    </div>
-                    <div>
+                    <field:Text label="Firstname" value="{{person.firstName}}" />
+                    <field:Text label="Lastname" value="{{person.lastName}}" />
+                    <field:Text label="Email" value="{{person.email}}" />
+                    <field:Text label="Phone" value="{{person.phone}}" />
+                    <ui:Field>
                         <input type="submit" value="Save"/>
-                    </div>
+                    </ui:Field>
                 </fieldset>
             </form>
             <h3>Preview</h3>
