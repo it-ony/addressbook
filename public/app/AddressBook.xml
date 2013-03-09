@@ -1,16 +1,25 @@
 <?xml version="1.0"?>
 <app:AddressBookClass xmlns="http://www.w3.org/1999/xhtml"
-                      xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:view="app.view" xmlns:field="js.ui.field">
+                      xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:view="app.view"
+                      xmlns:field="js.ui.field" xmlns:data="js.data" xmlns:conf="js.conf">
+
+
+    <data:LocalStorageDataSource cid="dataSource" name="addressBook">
+        <conf:DataSourceConfiguration>
+            <conf:ResourceConfiguration modelClassName="app.model.Person" path="persons" />
+        </conf:DataSourceConfiguration>
+    </data:LocalStorageDataSource>
+
     <div class="container">
         <h1>Address Book</h1>
         <div>
             <form onsubmit="submitForm">
                 <fieldset>
                     <legend>Create new contact</legend>
-                    <field:Text label="Firstname" value="{{person.firstName}}" />
-                    <field:Text label="Lastname" value="{{person.lastName}}" />
-                    <field:Text label="Email" value="{{person.email}}" />
-                    <field:Text label="Phone" value="{{person.phone}}" />
+                    <field:Text label="Firstname" value="{{person.firstName}}"/>
+                    <field:Text label="Lastname" value="{{person.lastName}}"/>
+                    <field:Text label="Email" value="{{person.email}}"/>
+                    <field:Text label="Phone" value="{{person.phone}}"/>
                     <ui:Field>
                         <input type="submit" value="Save"/>
                     </ui:Field>

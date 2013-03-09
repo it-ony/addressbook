@@ -1,15 +1,16 @@
 define(
     ["js/core/Application",
-    "app/model/Person",
-    "js/core/List"],
-    function (Application, Person, List) {
+        "app/model/Person",
+        "js/core/List",
+        "js/data/Collection"],
+    function (Application, Person, List, Collection) {
 
 
         return Application.inherit({
 
-            initialize: function () {
-                this.set('persons', new List());
-                this.set('person', new Person());
+            defaults: {
+                persons: null,
+                person: null
             },
 
             /***
@@ -17,33 +18,44 @@ define(
              * @param parameter
              * @param callback
              */
-            start:function (parameter, callback) {
+            start: function (parameter, callback) {
+                this.set('persons', this.$.dataSource.createCollection(Collection.of(Person)));
+                this.set('person', this.$.persons.createItem());
+
                 // false - disables autostart
                 this.callBase(parameter, false);
 
-                callback();
+                this.$.persons.fetch({noCache: true}, function (err) {
+                    callback();
+                });
+
+
             },
-            submitForm: function(e){
+            submitForm: function (e) {
                 this.$.person.validate();
 
-                if(this.$.person.isValid()){
-                    // add the current person to the list of persons
-                    this.$.persons.add(this.$.person);
+                if (this.$.person.isValid()) {
+                    var self = this;
+                    this.$.person.save(null, function (err) {
+                        if (!err) {
+                            // add the current person to the collection of persons
+                            self.$.persons.add(self.$.person);
 
-                    // set a new person as current person
-                    this.set('person', new Person());
+                            // set a new person as current person
+                            self.set('person', self.$.persons.createItem());
+                        }
+                    });
+
                 }
-
 
 
                 e.preventDefault();
             },
-            onRemove: function(e){
+            onRemove: function (e) {
                 // get the person of the current row
                 var person = e.target.find("person");
 
-                // remove from list
-                this.$.persons.remove(person);
+                person.remove();
             }
         });
     }
