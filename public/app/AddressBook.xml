@@ -10,14 +10,22 @@
                     <div>
                         <label for="firstName">Firstname</label>
                         <input id="firstName" type="text" value="{{person.firstName}}"/>
+                        <div class="error">{person.errors().firstName.message}</div>
                     </div>
                     <div>
                         <label for="lastName">Lastname</label>
                         <input id="lastName" type="text" value="{{person.lastName}}"/>
+                        <div class="error">{person.errors().lastName.message}</div>
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input id="email" type="text" value="{{person.email}}"/>
+                        <div class="error">{person.errors().email.message}</div>
                     </div>
                     <div>
                         <label for="phone">Phonenumber</label>
                         <input id="phone" type="text" value="{{person.phone}}"/>
+                        <span class="error">{person.errors().phone.message}</span>
                     </div>
                     <div>
                         <input type="submit" value="Save"/>

@@ -4,7 +4,11 @@
         <span>Name:</span>
         {person.fullName()}
     </p>
-    <p>
+    <p visible="{person.email}">
+        <span>Email:</span>
+        {person.email}
+    </p>
+    <p visible="{person.phone}">
         <span>Phone:</span>
         {person.phone}
     </p>

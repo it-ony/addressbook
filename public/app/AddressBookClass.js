@@ -24,12 +24,17 @@ define(
                 callback();
             },
             submitForm: function(e){
+                this.$.person.validate();
 
-                // add the current person to the list of persons
-                this.$.persons.add(this.$.person);
+                if(this.$.person.isValid()){
+                    // add the current person to the list of persons
+                    this.$.persons.add(this.$.person);
 
-                // set a new person as current person
-                this.set('person', new Person());
+                    // set a new person as current person
+                    this.set('person', new Person());
+                }
+
+
 
                 e.preventDefault();
             },
