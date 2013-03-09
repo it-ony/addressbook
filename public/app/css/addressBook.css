@@ -1,0 +1,43 @@
+form {
+    width: 300px;
+}
+
+fieldset {
+    border: 1px solid #d3d3d3;
+    padding-top: 10px;
+}
+
+fieldset > legend {
+    font-weight: bold;
+}
+
+fieldset > div {
+    line-height: 28px;
+}
+
+fieldset label {
+    width: 130px;
+    display: inline-block;
+}
+
+fieldset div input[type="submit"] {
+    margin-left: 130px;
+}
+
+.preview {
+    border: 1px solid #d3d3d3;
+    width: 300px;
+}
+
+.preview > p {
+    padding: 0 10px;
+}
+
+.preview > p > span {
+    display: inline-block;
+    width: 100px;
+}
+
+td {
+    padding: 5px 4px;
+}
