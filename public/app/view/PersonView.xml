@@ -1,0 +1,11 @@
+<ui:View xmlns:ui="js.ui"
+         xmlns="http://www.w3.org/1999/xhtml" person="">
+    <p>
+        <span>Name:</span>
+        {person.fullName()}
+    </p>
+    <p>
+        <span>Phone:</span>
+        {person.phone}
+    </p>
+</ui:View>

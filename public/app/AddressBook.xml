@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <app:AddressBookClass xmlns="http://www.w3.org/1999/xhtml"
-                      xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app">
+                      xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:view="app.view">
     <div class="container">
         <h1>Address Book</h1>
         <div>
@@ -25,24 +25,14 @@
                 </fieldset>
             </form>
             <h3>Preview</h3>
-            <div class="preview">
-                <p>
-                    <span>Name:</span> {person.fullName()}
-                </p>
-                <p>
-                    <span>Phone:</span> {person.phone}
-                </p>
-            </div>
+            <view:PersonView class="preview" person="{person}"/>
         </div>
         <h2>Contacts</h2>
         <ui:ItemsView items="{persons}" itemKey="person" tagName="table">
             <js:Template name="item">
                 <tr>
                     <td>
-                        {person.fullName()}
-                    </td>
-                    <td>
-                        {person.phone}
+                        <view:PersonView class="preview" person="{person}"/>
                     </td>
                     <td>
                         <a onclick="onRemove">Remove</a>
