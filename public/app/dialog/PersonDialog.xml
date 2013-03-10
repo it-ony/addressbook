@@ -1,0 +1,44 @@
+<dialog:EditDialog xmlns="http://www.w3.org/1999/xhtml"
+                   xmlns:dialog="app.dialog"
+                   xmlns:js="js.core" xmlns:field="js.ui.field" xmlns:ui="js.ui" xmlns:view="app.view">
+    <js:Content name="body">
+        <form onsubmit="submitForm" class="form-vertical">
+            <fieldset>
+                <div class="row">
+                    <div class="span3">
+                        <field:Text label="Firstname" value="{{model.firstName}}"/>
+                    </div>
+                    <div class="span3">
+                        <field:Text label="Lastname" value="{{model.lastName}}"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span3">
+                        <field:Text label="Email" value="{{model.email}}"/>
+                    </div>
+                    <div class="span3">
+                        <field:Text label="Phone" value="{{model.phone}}"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span3">
+                        <ui:Field label="Company">
+                            <select items="{companies}" itemKey="company" selectedItem="{{model.company}}">
+                                <js:Template name="item">
+                                    <option>{company.name}</option>
+                                </js:Template>
+                            </select>
+                        </ui:Field>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Address</legend>
+                <view:AddressForm address="{model.address}"/>
+            </fieldset>
+        </form>
+    </js:Content>
+    <js:Content name="footer">
+        <ui:Button type="success" label="Save" onclick="confirmDialog"/>
+    </js:Content>
+</dialog:EditDialog>

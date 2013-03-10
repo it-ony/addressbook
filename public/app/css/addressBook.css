@@ -1,43 +1,115 @@
-form {
-    width: 300px;
+#content {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }
 
-fieldset {
-    border: 1px solid #d3d3d3;
-    padding-top: 10px;
+.content-toolbar {
+    height: 50px;
+    background: #ECECF0;
+    line-height: 50px;
+    padding: 0 20px;
 }
 
-fieldset > legend {
-    font-weight: bold;
+.content-main {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 50px;
 }
 
-fieldset > div {
-    line-height: 28px;
-}
-
-fieldset label {
-    width: 130px;
-    display: inline-block;
-}
-
-fieldset div input[type="submit"] {
-    margin-left: 130px;
-}
-
-.preview {
-    border: 1px solid #d3d3d3;
-    width: 300px;
-}
-
-.preview > p {
+.content-footer {
+    position: absolute;
     padding: 0 10px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 40px;
+    line-height: 40px;
+    background-color: #EEE;
+    background-repeat: repeat-x;
+    background-image: -moz-linear-gradient(top, whiteSmoke 0%, #EEE 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, whiteSmoke), color-stop(100%, #EEE));
+    background-image: -webkit-linear-gradient(top, whiteSmoke 0%, #EEE 100%);
+    background-image: -ms-linear-gradient(top, whiteSmoke 0%, #EEE 100%);
+    background-image: -o-linear-gradient(top, whiteSmoke 0%, #EEE 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#f5f5f5', endColorstr = '#eeeeee', GradientType = 0);
+    background-image: linear-gradient(top, whiteSmoke 0%, #EEE 100%);
+    border-top: 2px solid #E5E5E5;
 }
 
-.preview > p > span {
-    display: inline-block;
-    width: 100px;
+.data-grid-head {
+    width: 100%;
+    margin: 0;
 }
 
-td {
-    padding: 5px 4px;
+.data-grid-head th {
+    text-align: left;
+    padding: 8px;
+    background-color: #EEE;
+    background-repeat: repeat-x;
+    background-image: -moz-linear-gradient(top, whiteSmoke 0%, #EEE 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, whiteSmoke), color-stop(100%, #EEE));
+    background-image: -webkit-linear-gradient(top, whiteSmoke 0%, #EEE 100%);
+    background-image: -ms-linear-gradient(top, whiteSmoke 0%, #EEE 100%);
+    background-image: -o-linear-gradient(top, whiteSmoke 0%, #EEE 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#f5f5f5', endColorstr = '#eeeeee', GradientType = 0);
+    background-image: linear-gradient(top, whiteSmoke 0%, #EEE 100%);
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.data-grid-body {
+    overflow: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 35px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.table tbody tr:hover td,
+.table tbody tr:hover th {
+    background-color: #bbe1ff;
+}
+
+.data-grid-body .active td,
+.data-grid-body tr:hover.active td {
+    background-color: #1d90c7;
+    color: white;
+}
+
+.data-grid-body td {
+    border-top: none;
+    padding: 0;
+}
+
+.data-grid-body td .cell-container {
+    padding: 8px
+}
+
+.data-grid-body tr.loading td * {
+    visibility: hidden;
+}
+
+.data-grid-body .odd {
+    background: #fcfcfc;
+}
+
+legend {
+    font-size: 13px;
+    font-weight: bold;
+    padding-bottom: 5px;
+    line-height: 25px;
 }

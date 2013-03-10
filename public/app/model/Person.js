@@ -1,18 +1,32 @@
-define(["js/data/Model","js/data/validator/RegExValidator", "js/data/validator/EmailValidator"], function(Model, RegExValidator, EmailValidator){
+define(["js/data/Model","js/data/validator/RegExValidator", "js/data/validator/EmailValidator", "app/entity/Address", "app/model/Company"], function(Model, RegExValidator, EmailValidator, Address, Company){
 
     // returns a new class which inherits from js.data.Model
     return Model.inherit('app.model.Person',{
 
         schema: {
-            firstName: String,
-            lastName: String,
+            firstName: {
+                type: String,
+                includeInIndex: true
+            },
+            lastName: {
+                type: String,
+                includeInIndex: true
+            },
             email: {
                 type: String,
-                required: false
+                required: false,
+                includeInIndex: true
             },
             phone: {
                 type: String,
+                includeInIndex: true,
                 required: false
+            },
+            address: Address,
+            company: {
+                type: Company,
+                required: false,
+                includeInIndex: true
             }
         },
 
@@ -31,7 +45,8 @@ define(["js/data/Model","js/data/validator/RegExValidator", "js/data/validator/E
         defaults: {
             firstName: "",
             lastName: "",
-            phone: ""
+            phone: "",
+            address: Address
         },
 
         fullName: function(){

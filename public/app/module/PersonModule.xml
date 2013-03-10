@@ -1,0 +1,35 @@
+<module:PersonModuleClass xmlns:module="app.module" xmlns="http://www.w3.org/1999/xhtml" xmlns:js="js.core"
+                          xmlns:ui="js.ui" xmlns:view="app.view" xmlns:field="js.ui.field" xmlns:dialog="app.dialog">
+
+    <js:Content name="main">
+        <div class="content-toolbar">
+            <div class="btn-group">
+                <ui:Button label="New" onclick="onNew"/>
+                <ui:Button label="Edit" onclick="onEdit"/>
+            </div>
+        </div>
+        <div class="content-main">
+            <ui:DataGrid data="{persons}" cid="dataGrid" rowHeight="25" onrowDblClick="onRowDblClick">
+                <ui:DataGridColumn path="firstName" title="Firstname" width="20%"/>
+                <ui:DataGridColumn path="lastName" title="Lastname" width="20%"/>
+                <ui:DataGridColumn path="email" title="Email" width="20%"/>
+                <ui:DataGridColumn path="phone" title="Phone" width="20%"/>
+                <ui:DataGridColumn width="20%">
+                    <js:Template name="cell">
+                        <ui:Button onclick="onRemove" class="btn-small" label="Remove"/>
+                    </js:Template>
+                </ui:DataGridColumn>
+            </ui:DataGrid>
+        </div>
+        <div class="content-footer">
+            <p class="muted">
+                {persons.size()} persons ({dataGrid.selectedItems.size()} selected)
+            </p>
+        </div>
+    </js:Content>
+
+    <js:Content>
+        <dialog:PersonDialog model="{person}" companies="{companies}" cid="personDialog" title="{dialogTitle}"/>
+    </js:Content>
+
+</module:PersonModuleClass>

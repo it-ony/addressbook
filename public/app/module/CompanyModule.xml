@@ -1,0 +1,34 @@
+<module:CompanyModuleClass xmlns:module="app.module" xmlns="http://www.w3.org/1999/xhtml" xmlns:js="js.core"
+                          xmlns:ui="js.ui" xmlns:view="app.view" xmlns:field="js.ui.field" xmlns:dialog="app.dialog">
+
+    <js:Content name="main">
+        <div class="content-toolbar">
+            <div class="btn-group">
+                <ui:Button label="New" onclick="onNew"/>
+                <ui:Button label="Edit" onclick="onEdit"/>
+            </div>
+        </div>
+        <div class="content-main">
+            <ui:DataGrid data="{companies}" cid="dataGrid" rowHeight="25" onrowDblClick="onRowDblClick">
+                <ui:DataGridColumn path="name" title="Firstname" width="30%"/>
+                <ui:DataGridColumn path="email" title="Email" width="30%"/>
+                <ui:DataGridColumn path="phone" title="Phone" width="20%"/>
+                <ui:DataGridColumn width="20%">
+                    <js:Template name="cell">
+                        <ui:Button onclick="onRemove" class="btn-small" label="Remove"/>
+                    </js:Template>
+                </ui:DataGridColumn>
+            </ui:DataGrid>
+        </div>
+        <div class="content-footer">
+            <p class="muted">
+                {companies.size()} companies ({dataGrid.selectedItems.size()} selected)
+            </p>
+        </div>
+    </js:Content>
+
+    <js:Content>
+        <dialog:CompanyDialog model="{company}" cid="companyDialog" title="{dialogTitle}"/>
+    </js:Content>
+
+</module:CompanyModuleClass>

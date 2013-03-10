@@ -4,42 +4,39 @@
                       xmlns:field="js.ui.field" xmlns:data="js.data" xmlns:conf="js.conf">
 
 
-    <data:LocalStorageDataSource cid="dataSource" name="addressBook">
-        <conf:DataSourceConfiguration>
-            <conf:ResourceConfiguration modelClassName="app.model.Person" path="persons" />
-        </conf:DataSourceConfiguration>
-    </data:LocalStorageDataSource>
+    <js:Injection cid="injection">
+        <data:RestDataSource gateway="api" determinateContextAttribute="false">
+            <conf:DataSourceConfiguration>
+            <conf:ResourceConfiguration modelClassName="app.model.Person" path="persons"/>
+            <conf:ResourceConfiguration modelClassName="app.model.Company" path="companies"/>
+            </conf:DataSourceConfiguration>
+        </data:RestDataSource>
+    </js:Injection>
 
-    <div class="container">
-        <h1>Address Book</h1>
-        <div>
-            <form onsubmit="submitForm">
-                <fieldset>
-                    <legend>Create new contact</legend>
-                    <field:Text label="Firstname" value="{{person.firstName}}"/>
-                    <field:Text label="Lastname" value="{{person.lastName}}"/>
-                    <field:Text label="Email" value="{{person.email}}"/>
-                    <field:Text label="Phone" value="{{person.phone}}"/>
-                    <ui:Field>
-                        <input type="submit" value="Save"/>
-                    </ui:Field>
-                </fieldset>
-            </form>
-            <h3>Preview</h3>
-            <view:PersonView class="preview" person="{person}"/>
+    <js:Router cid="router">
+        <conf:RouteConfiguration name="default" route="^$" onexec="defaultRoute"/>
+    </js:Router>
+
+    <header id="header" class="navbar navbar-fixed-top navbar-inverse">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <ul class="nav">
+                    <li selected="{isModuleActive('persons')}"><a href="persons">Persons</a></li>
+                    <li selected="{isModuleActive('companies')}"><a href="companies">Companies</a></li>
+                </ul>
+            </div>
         </div>
-        <h2>Contacts</h2>
-        <ui:ItemsView items="{persons}" itemKey="person" tagName="table">
-            <js:Template name="item">
-                <tr>
-                    <td>
-                        <view:PersonView class="preview" person="{person}"/>
-                    </td>
-                    <td>
-                        <a onclick="onRemove">Remove</a>
-                    </td>
-                </tr>
-            </js:Template>
-        </ui:ItemsView>
+    </header>
+
+    <div id="content">
+
+        <js:ModuleLoader router="{router}" cid="moduleLoader">
+            <conf:ModuleConfiguration name="persons" moduleClass="app.module.PersonModule" route="^persons$"/>
+            <conf:ModuleConfiguration name="companies" moduleClass="app.module.CompanyModule" route="^companies$"/>
+
+            <ui:ContentPlaceHolder name="main"/>
+
+        </js:ModuleLoader>
     </div>
+
 </app:AddressBookClass>

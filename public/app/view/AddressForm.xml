@@ -1,0 +1,11 @@
+<ui:View xmlns="http://www.w3.org/1999/xhtml"
+         xmlns:field="js.ui.field" xmlns:ui="js.ui" address="">
+    <div class="row">
+        <div class="span3">
+            <field:Text label="Street" value="{{address.street}}"/>
+        </div>
+        <div class="span3">
+            <field:Text label="City" value="{{address.city}}"/>
+        </div>
+    </div>
+</ui:View>

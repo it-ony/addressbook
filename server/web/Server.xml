@@ -1,13 +1,26 @@
 <Server xmlns="srv.core"
         xmlns:handler="srv.handler"
-        xmlns:endpoint="srv.endpoint">
+        xmlns:endpoint="srv.endpoint" xmlns:data="srv.data" xmlns:conf="js.conf">
 
     <EndPoints>
-        <endpoint:HttpEndPoint port="80"/>
+        <endpoint:HttpEndPoint port="8000"/>
     </EndPoints>
 
     <Handlers>
-        <handler:StaticFileHandler />
+        <handler:RestHandler>
+            <conf:DataSourceConfiguration>
+                <conf:ResourceConfiguration modelClassName="app.model.Person" path="persons"/>
+                <conf:ResourceConfiguration modelClassName="app.model.Company" path="companies"/>
+            </conf:DataSourceConfiguration>
+            <data:MongoDataSource database="addressBook">
+                <conf:DataSourceConfiguration>
+                    <conf:ResourceConfiguration modelClassName="app.model.Person" collection="person"/>
+                    <conf:ResourceConfiguration modelClassName="app.model.Company" collection="company"/>
+                </conf:DataSourceConfiguration>
+            </data:MongoDataSource>
+        </handler:RestHandler>
+
+        <handler:StaticFileHandler/>
     </Handlers>
 
 </Server>
