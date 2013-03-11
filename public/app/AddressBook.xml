@@ -5,12 +5,12 @@
 
 
     <js:Injection cid="injection">
-        <data:RestDataSource gateway="api" determinateContextAttribute="false">
+        <data:LocalStorageDataSource name="addressBook">
             <conf:DataSourceConfiguration>
-            <conf:ResourceConfiguration modelClassName="app.model.Person" path="persons"/>
-            <conf:ResourceConfiguration modelClassName="app.model.Company" path="companies"/>
+                <conf:ResourceConfiguration modelClassName="app.model.Person" path="persons"/>
+                <conf:ResourceConfiguration modelClassName="app.model.Company" path="companies"/>
             </conf:DataSourceConfiguration>
-        </data:RestDataSource>
+        </data:LocalStorageDataSource>
     </js:Injection>
 
     <js:Router cid="router">
@@ -21,8 +21,12 @@
         <div class="navbar-inner">
             <div class="container-fluid">
                 <ul class="nav">
-                    <li selected="{isModuleActive('persons')}"><a href="persons">Persons</a></li>
-                    <li selected="{isModuleActive('companies')}"><a href="companies">Companies</a></li>
+                    <li selected="{isModuleActive('persons')}">
+                        <a href="persons">Persons</a>
+                    </li>
+                    <li selected="{isModuleActive('companies')}">
+                        <a href="companies">Companies</a>
+                    </li>
                 </ul>
             </div>
         </div>

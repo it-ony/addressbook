@@ -1,8 +1,9 @@
 define(
     ["js/core/Application",
         "app/model/AddressBook",
-        "js/data/DataSource"],
-    function (Application, AddressBook, DataSource) {
+        "js/data/DataSource",
+        "flow"],
+    function (Application, AddressBook, DataSource, flow) {
 
 
         return Application.inherit({
@@ -20,17 +21,30 @@ define(
             }.async(),
 
             start: function (parameter, callback) {
-                var addressBook = this.$.dataSource.createEntity(AddressBook);
 
-                this.$.injection.addInstance("addressBook",addressBook);
+                var self = this;
 
-                // false - disables autostart
-                this.callBase();
+                flow()
+                    .seq(function (cb) {
+                        var addressBook = self.$.dataSource.createEntity(AddressBook);
+
+                        self.$.injection.addInstance("addressBook", addressBook);
+
+                        cb();
+                    })
+                    .exec(function (err) {
+                        if (err) {
+                            callback(err);
+                        } else {
+                            // call start from super
+                            self.start.baseImplementation.call(self, parameter, callback);
+                        }
+                    });
             },
 
-            isModuleActive: function(moduleName){
+            isModuleActive: function (moduleName) {
                 return this.$.moduleLoader.$.currentModuleName === moduleName;
-            }.on(['moduleLoader','change:currentModuleName'])
+            }.on(['moduleLoader', 'change:currentModuleName'])
 
         });
     }
