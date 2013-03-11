@@ -1,0 +1,27 @@
+{
+    "modules": [
+        {
+            "name": "app/AddressBook",
+            "include": [
+                "xaml!app/AddressBook"
+            ]
+        },
+        {
+            "name": "app/module/PersonModule",
+            "include": [
+                "xaml!app/module/PersonModule"
+            ]
+        },
+        {
+            "name": "app/module/CompanyModule",
+            "include": [
+                "xaml!app/module/CompanyModule"
+            ]
+        }
+    ],
+    "indexFile": "index.html",
+    "targetDir": "public-build",
+    "uglify": true,
+    "usePackageVersion": true,
+    "removeSpaces": true
+}
