@@ -54,8 +54,7 @@ define(["js/core/Module"], function (Module) {
             } else {
                 this.set('dialogTitle', "Edit " + company.$.name);
             }
-            this.set('company', company);
-            this.$.companyDialog.showModal(function () {
+            this.$.companyDialog.edit(company, function () {
 
             });
         },

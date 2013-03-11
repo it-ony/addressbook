@@ -28,7 +28,7 @@
     </js:Content>
 
     <js:Content>
-        <dialog:CompanyDialog model="{company}" cid="companyDialog" title="{dialogTitle}"/>
+        <dialog:CompanyDialog cid="companyDialog" title="{dialogTitle}"/>
     </js:Content>
 
 </module:CompanyModuleClass>

@@ -29,7 +29,7 @@
     </js:Content>
 
     <js:Content>
-        <dialog:PersonDialog model="{person}" companies="{companies}" cid="personDialog" title="{dialogTitle}"/>
+        <dialog:PersonDialog companies="{companies}" cid="personDialog" title="{dialogTitle}"/>
     </js:Content>
 
 </module:PersonModuleClass>

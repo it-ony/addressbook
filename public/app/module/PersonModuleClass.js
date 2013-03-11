@@ -39,13 +39,13 @@ define(["js/core/Module"], function (Module) {
         onRowDblClick: function(e){
             var person = e.target.find('item');
 
-            this.editPerson(person.clone());
+            this.editPerson(person);
         },
 
         onEdit: function(){
             if(this.$.dataGrid.$.selectedItems && !this.$.dataGrid.$.selectedItems.isEmpty()){
                 var person = this.$.dataGrid.$.selectedItems.at(0);
-                this.editPerson(person.clone());
+                this.editPerson(person);
             }
 
         },
@@ -57,8 +57,7 @@ define(["js/core/Module"], function (Module) {
                 this.set('dialogTitle', "Edit " + person.fullName());
                 person.fetch();
             }
-            this.set('person', person);
-            this.$.personDialog.showModal(function () {
+            this.$.personDialog.edit(person, function () {
 
             });
         },
